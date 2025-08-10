@@ -12,7 +12,7 @@ fun main() {
 }
 
 fun reaBooksFile(file: File): List<Book> {
-    return Json.decodeFromString<List<Book>>(File("books.json").readText().trim())
+    return Json.decodeFromString<List<Book>>(file.readText().trim())
 }
 
 fun writeBooksFile(file: File) {
