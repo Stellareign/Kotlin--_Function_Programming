@@ -1,4 +1,4 @@
-package org.example.test
+package org.example.lessons.test
 
 import kotlinx.serialization.Serializable
 

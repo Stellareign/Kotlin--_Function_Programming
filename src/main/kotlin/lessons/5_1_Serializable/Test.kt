@@ -1,4 +1,4 @@
-package org.example.test
+package org.example.lessons.test
 
 import kotlinx.serialization.json.Json
 import java.io.File
@@ -28,5 +28,5 @@ fun writeFile(file: File) {
         items.add(item)
     }
     val itemString = Json.encodeToString(items)
-    file.appendText(itemString)
+    file.writeText(itemString)
 }
