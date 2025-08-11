@@ -1,4 +1,4 @@
-package org.example.task_5_1_Serializable
+package org.example.tasks.task_5_1_Serializable
 
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.json.Json
