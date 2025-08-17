@@ -9,27 +9,30 @@ import org.example.lessons.`5_2`.profile.Person
 fun main() {
     val clothingCards = ProductRepository.clothingCards
 //    clothingCards.forEach { println(it) }
-    var filterCards = filter(clothingCards, object : Condition {
+    var filterCards = filter1(clothingCards, object : Condition {
         override fun isSuitable(productCard: ClothingCard): Boolean { //вызов метода через анонимный класс позволяет не плодить классы под каждое требование
             return productCard.color == Color.RED
         }
     })
-    filterCards = filter(filterCards, object: Condition {
-        override fun isSuitable(productCard: ClothingCard): Boolean {
-            return productCard.size == ClothingSize.SMALL
-        }
-    })
-    filterCards = filter(filterCards, object: Condition {
-        override fun isSuitable(productCard: ClothingCard): Boolean {
-            return productCard.category == ClothingCategory.SHOES
-        }
-    })
+   var filtercards2 = filter(clothingCards){it.size == ClothingSize.SMALL }
+    filtercards2 = filter(clothingCards){it.color == Color.RED}
+    filtercards2 = filter(clothingCards){it.category == ClothingCategory.TROUSERS }
 
-    filterCards.forEach { println(it) }
-
+//    filterCards.forEach { println(it) }
+   filtercards2.forEach { println(it) }
 }
 
-fun filter(list: List<ClothingCard>, condition: Condition): List<ClothingCard> {
+fun filter(list: List<ClothingCard>, isSuitable: (ClothingCard) -> Boolean) : List<ClothingCard> {
+    val filterList = mutableListOf<ClothingCard>()
+    for (card in list) {
+        if (isSuitable(card)) {
+            filterList.add(card)
+        }
+    }
+    return filterList
+}
+
+fun filter1(list: List<ClothingCard>, condition: Condition): List<ClothingCard> {
     val filterList = mutableListOf<ClothingCard>()
     for (card in list) {
         if (condition.isSuitable(card)) {
