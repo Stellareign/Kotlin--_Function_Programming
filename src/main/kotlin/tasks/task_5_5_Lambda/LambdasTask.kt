@@ -3,7 +3,6 @@ package org.example.tasks.task_5_5_Lambda
 import java.io.PrintStream
 
 
-
 /** TODO: Определить функцию высшего порядка processNumbers
 1. Функция должна принимать:
 - Список чисел для обработки.
@@ -23,7 +22,7 @@ TODO: Определить функцию startProcessing
  **/
 fun main() {
     System.setOut(PrintStream(System.out, true, "UTF-8"))
-startProcessing()
+    startProcessing()
 }
 
 fun processNumbers(list: List<Int>, filter: (Int) -> Boolean, transNum: (Int) -> Int): List<Int> {
@@ -43,10 +42,7 @@ fun startProcessing() {
     for (s in numbers.split(" ").toList()) {
         numList.add(s.toInt())
     }
-
     val filterTransList = processNumbers(numList, { x: Int -> x > 10 }, { x -> x * 3 })
-
-
-     println("Результат обработки: $filterTransList")
+    println("Результат обработки: $filterTransList")
 }
 

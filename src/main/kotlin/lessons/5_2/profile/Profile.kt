@@ -1,5 +1,7 @@
 package org.example.lessons.`5_2`.profile
 
+import com.sun.tools.javac.jvm.Profile
+
 fun main() {
 //
     val list = ProfileRepository.profiles
@@ -18,13 +20,34 @@ fun main() {
 //    val filterAge44: (Person) -> Boolean = { person: Person -> person.age == 44 }
 //    var filter = filter(list, filterAge44)
 
+
 // запись лямбды в методе:
-    var filter = filter(list) { it.age == 43 }
-    filter = filter(filter) { it.firstName.startsWith("A") }
-    filter = filter(filter) { it.country == "Russia" }
+//    var filter = filter(list) { it.age == 43 }
+//    filter = filter(filter) { it.firstName.startsWith("A") }
+//    filter = filter(filter) { it.country == "Russia" }
+//
+//    filter.forEach { println(it) }
 
-    filter.forEach { println(it) }
+//    println(transform2(list){it.lastName})
+//    println(transform2(list){it.firstName})
+    println(transform2(list){it.age})
 
+}
+
+fun <T> transform2(persons: List<Person>, operation: (Person) -> T): List<T> { // дженерики
+    val result = mutableListOf<T>()
+    for (person in persons) {
+            result.add(operation(person))
+    }
+    return result
+}
+
+fun transform(persons: List<Person>): List<String> {
+    val result = mutableListOf<String>()
+    for (person in persons) {
+        result.add(person.firstName)
+    }
+    return result
 }
 
 fun filter(list: List<Person>, isSuitable: (Person) -> Boolean): List<Person> {
