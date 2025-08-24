@@ -26,7 +26,7 @@ fun List<Int>.sumOfEvens(): Int {
 
 fun processList() {
     val listFromString = mutableListOf<Int>()
-    println("Введите числа, разделённые строкой")
+    println("Введите числа, разделённые пробелом")
     val numberString = readln()
 
     for (element in numberString.split(" ").toList()) {

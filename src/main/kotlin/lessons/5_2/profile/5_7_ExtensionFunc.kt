@@ -8,7 +8,7 @@ fun main() {
     list.filterList{it.gender == Gender.MALE}
         .filterList{it.firstName.startsWith("M")}
         .filterList{it.age > 40}
-        .transformElement { it.copy(age = it.age+1) }
+        .map {it.copy(age = it.age+1)} // можно трансформ заменить на строенный метод map()
         .forEach{println(it)}
 
 }
