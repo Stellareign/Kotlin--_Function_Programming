@@ -1,11 +1,14 @@
 package org.example.lessons.`5_2`.profile
 
+import org.example.lessons.extensionFunctions.filterList
+import org.example.lessons.extensionFunctions.transformElement
+
 fun main() {
     val list = ProfileRepository.profiles
-    list.filter{it.gender == Gender.MALE}
-        .filter{it.firstName.startsWith("M")}
-        .filter{it.age > 40}
-        .transformList { it.copy(age = it.age+1) }
+    list.filterList{it.gender == Gender.MALE}
+        .filterList{it.firstName.startsWith("M")}
+        .filterList{it.age > 40}
+        .transformElement { it.copy(age = it.age+1) }
         .forEach{println(it)}
 
 }
