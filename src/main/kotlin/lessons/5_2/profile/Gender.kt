@@ -9,4 +9,5 @@ enum class Gender {
     MALE,
     @SerialName("Female")
     FEMALE
+
 }

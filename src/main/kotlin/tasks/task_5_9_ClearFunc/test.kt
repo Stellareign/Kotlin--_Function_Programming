@@ -58,5 +58,4 @@ fun processProductsForUI(products: List<Product>): List<String> {
         .sortedBy { it.price }
         .map { "Product ID: ${it.id} | Name: ${it.name} | Price: $${it.price}"}
 
-//    return emptyList() // Удалите этот заглушку и напишите решение
 }
